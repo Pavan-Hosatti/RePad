@@ -9,7 +9,7 @@ import {
     Volume2, VolumeX, ChevronRight, ArrowRight, 
     Thermometer, CheckCircle, Flame, Factory 
 } from 'lucide-react';
-import VoiceBot from '../components/VoiceBot/VoiceBot';
+
 
 // IMPORT FOR I18N
 import { useTranslation } from 'react-i18next';
@@ -547,10 +547,11 @@ const SmartDisposalSystem = () => {
             </footer>
 
             {/* VoiceBot Placement: */}
-            <VoiceBot />
+         
         </div>
     );
 };
 
 // Export the new component name
 export default SmartDisposalSystem;
+
