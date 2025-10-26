@@ -84,8 +84,17 @@ const mockDisposalData = {
     // Collection Route Optimizations (Replacing Crop Predictions)
     routeOptimizations: [
         // t() is applied to 'route', 'depot', and 'details'
-        { id: 'R-01', route: t("North Zone Daily"), depot: t("Depot 1"), efficiency: "98%", timeSaved: t("+35 min"), confidence: 95, details: t("Optimized path based on real-time bin levels. Recommended vehicles: 2."), route: 'routeDetails', factors: { fill: 90, traffic: 80, time: 95 } },
-        { id: 'R-02', route: t("South Zone Weekend"), depot: t("Depot 2"), efficiency: "78%", timeSaved: t("-10 min"), confidence: 60, details: t("Sub-optimal due to unexpected road closures. Manual review needed."), route: 'routeDetails', factors: { fill: 60, traffic: 70, time: 85 } },
+ { 
+        id: 'R-02', 
+        routeName: t("South Zone Weekend"),  // ✅ Changed from 'route' to 'routeName'
+        depot: t("Depot 2"), 
+        efficiency: "78%", 
+        timeSaved: t("-10 min"), 
+        confidence: 60, 
+        details: t("Sub-optimal due to unexpected road closures. Manual review needed."), 
+        routeDetails: 'routeDetails',  // ✅ Changed from 'route' to 'routeDetails'
+        factors: { fill: 60, traffic: 70, time: 85 } 
+    },
     ],
 
     // Historical Time-Series Data
@@ -200,7 +209,7 @@ const RouteOptimizationCard = ({ optimization, navigate }) => {
             onClick={() => navigate('routeDetails', optimization.id)}
         >
             <div className="flex justify-between items-center mb-2">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white">{t(optimization.route)}</h3>
+             <h3 className="text-xl font-bold text-gray-900 dark:text-white">{t(optimization.routeName)}</h3>
                 <span className="text-xs font-medium text-purple-700 bg-purple-100 dark:text-purple-300 dark:bg-purple-800/30 px-3 py-1 rounded-full">{t(optimization.depot)}</span>
             </div>
             <p className="text-4xl font-extrabold text-purple-600 dark:text-purple-400 mb-1">{optimization.efficiency}</p>
